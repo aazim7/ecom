@@ -1,0 +1,183 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block main-content %}
+<div class="banner-wrapper no_background">
+    <div class="banner-wrapper-inner">
+        <nav class="furgan-breadcrumb"><a href="index.html">Home</a><i class="fa fa-angle-right"></i><a href="#">Shop</a>
+            <i class="fa fa-angle-right"></i>Single Product
+        </nav>
+    </div>
+</div>
+<div class="single-thumb-vertical main-container shop-page no-sidebar">
+    <div class="container">
+        <div class="row">
+            <div class="main-content col-md-12">
+                <div class="furgan-notices-wrapper"></div>
+                <div id="product-27" class="post-27 product type-product status-publish has-post-thumbnail product_cat-table product_cat-new-arrivals product_cat-lamp product_tag-table product_tag-sock first instock shipping-taxable purchasable product-type-variable has-default-attributes">
+                    <div class="main-contain-summary">
+                        <div class="contain-left has-gallery">
+                            <div class="single-left">
+                                <div class="product-video-button"><a class="buttonvideo" href="#" data-videosite="vimeo" data-videoid="88824488" tabindex="0"><span class="flaticon-play-button"></span>Video</a></div>
+                                <div class="furgan-product-gallery furgan-product-gallery--with-images furgan-product-gallery--columns-4 images">
+                                    <a href="#" class="furgan-product-gallery__trigger">
+                                        <img draggable="false" class="emoji" alt="🔍"
+                                        src="https://s.w.org/images/core/emoji/11/svg/1f50d.svg"></a>
+                                        <div class="flex-viewport">
+                                            <figure class="furgan-product-gallery__wrapper">
+                                                {% for i in product.product_images.all %}
+                                                <div class="furgan-product-gallery__image">
+                                                    <img alt="img"
+                                                    src="{{i.image.url}}">
+                                                </div>
+                                                {% endfor %}
+                                            </figure>
+                                        </div>
+                                        <ol class="flex-control-nav flex-control-thumbs">
+                                            {% for i in product.product_images.all %}
+                                            <li><img
+                                                src="{{i.image.url}}" alt="img">
+                                            </li>
+                                            {% endfor %}
+                                        </ol>
+                                    </div>
+                                </div>
+                                <div class="summary entry-summary">
+                                    <div class="flash">
+                                        <span class="onnew"><span class="text">New</span></span></div>
+                                        <h1 class="product_title entry-title">{{product.product_name}}</h1>
+                                       
+                                        {% for z in product.product_variations.all %}
+                                           {{forloop.counter}}
+                                           
+                                            <p>{{z.pin}}</p>
+                                        {% endfor  %}
+                                        <p class="price">
+                                            <span class="furgan-Price-amount amount">
+                                                <span class="furgan-Price-currencySymbol">$</span>{{product.price}}</span>
+                                            </p>
+                                            <p class="stock in-stock">
+                                                Availability:
+                                                {% if product.quantity %}
+                                                <span> In stock</span>
+                                                {% else %}
+                                                <span style="color: red;">Out Of Stock</span>
+                                                {% endif %}
+                                            </p>
+                                            <div class="furgan-product-details__short-description">
+                                                <p>{{product.product_description}}</p>
+                                                <ul>
+                                                    <li>Water-resistant fabric with soft lycra detailing inside</li>
+                                                    <li>CLean zip-front, and three piece hood</li>
+                                                    <li>Subtle branding and diagonal panel detail</li>
+                                                </ul>
+                                            </div>
+                                            {% if product.ptype == "variations" %}
+                                                {% include 'products/forms/variation.html'%}
+                                            {% else %}
+                                                {% include 'products/forms/simple.html'%}
+                                            {% endif %}
+                                            
+                                            <div class="yith-wcwl-add-to-wishlist">
+                                                <div class="yith-wcwl-add-button show">
+                                                    <a href="#" rel="nofollow"
+                                                    data-product-id="27" data-product-type="variable" class="add_to_wishlist">
+                                                Add to Wishlist</a>
+                                            </div>
+                                        </div>
+                                        <div class="clear"></div>
+                                        <a href="#"
+                                        class="compare button" data-product_id="27" rel="nofollow">Compare</a>
+                                        <div class="product_meta">
+                                            <div class="wcml-dropdown product wcml_currency_switcher">
+                                                <ul>
+                                                    <li class="wcml-cs-active-currency">
+                                                        <a class="wcml-cs-item-toggle">USD</a>
+                                                        <ul class="wcml-cs-submenu">
+                                                            <li>
+                                                                <a>EUR</a>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <span class="sku_wrapper">SKU: <span class="sku">885B712</span></span>
+                                            <span class="posted_in">Categories: <a
+                                                href="#"
+                                                rel="tag">Table</a>, <a
+                                                href="#" rel="tag">New arrivals</a>, <a
+                                                href="#" rel="tag">Lamp</a></span>
+                                                <span class="tagged_as">Tags: <a href="#"
+                                                    rel="tag">Table</a>, <a
+                                                    href="#" rel="tag">Sock</a></span>
+                                                </div>
+                                                <div class="furgan-share-socials">
+                                                    <h5 class="social-heading">Share: </h5>
+                                                    <a target="_blank" class="facebook" href="#">
+                                                        <i class="fa fa-facebook-f"></i>
+                                                    </a>
+                                                    <a target="_blank" class="twitter"
+                                                    href="#"><i class="fa fa-twitter"></i>
+                                                </a>
+                                                <a target="_blank" class="pinterest"
+                                                href="#"> <i class="fa fa-pinterest"></i>
+                                            </a>
+                                            <a target="_blank" class="googleplus"
+                                            href="#"><i class="fa fa-google-plus"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% comment %}
+                        {% include 'products/tabs.html' %}
+                        {% endcomment %}
+                    </div>
+                </div>
+                {% if r_products %}
+                {% include 'products/related.html' %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% endblock main-content %}
+
+    {% block for-javascript %}
+    <script type="text/javascript">
+        document.getElementById("qplus").addEventListener("click", plus)
+        document.getElementById("qminus").addEventListener("click", minus)
+        
+        function plus(){
+            counter = parseInt(document.getElementById("counter-qty").value)
+            conunterN = counter + 1
+            document.getElementById("counter-qty").setAttribute('value', conunterN)
+                
+        }
+         function minus(){
+            console.log("s")
+            counter = parseInt(document.getElementById("counter-qty").value)
+            counterM = counter - 1
+            document.getElementById("counter-qty").setAttribute('value', counterM)         
+        }
+
+        $(".simple_form").submit(function(event){
+            event.preventDefault();
+            formData = $(this).serialize();
+            request_url = '/add-to-cart/';
+            $.ajax({
+                type:'GET',
+                dataType:'json',
+                url:request_url,
+                data : formData,
+                success:function(e){
+                    res = e['cart_quantity']
+                    $(".count").text(res);
+                    temp=$("#cart-count").addClass("count")
+                    if(temp){
+                        temp.text(res)
+                    }
+                }
+            })
+        });
+    </script>
+    {% endblock for-javascript %}

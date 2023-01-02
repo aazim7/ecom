@@ -1,0 +1,14 @@
+<div class="holaa">
+    <!-- Ppoduct Loop -->
+    {% for product in all_products %}
+
+    <p>{{product.product_name}}</p>
+    <!-- get foreign key using related_name from models then firs, all , last then field  -->
+    <div>{{product.product_images.first.image.url}}</div>
+    <!-- foreign key with loop  -->
+    {% for i in product.product_images.all %}
+    <img width="100px" src="{{i.image.url}}">
+    {% endfor %}
+
+    {% endfor %}
+</div>

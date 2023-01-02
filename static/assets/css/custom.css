@@ -1,0 +1,32 @@
+.pop-up{
+	position: fixed;
+	left: 30px;
+	bottom: 30px;
+	background: #CD1F3A;
+}
+.pop-up p{
+	margin: 0;
+}
+.otpform input{
+	max-width: 40px;
+	padding: 0;
+    text-align: center;
+}
+.reotp{
+	margin-top: 1rem;
+	cursor: pointer;
+}
+.reotp p{
+	text-decoration: underline;
+}
+#toggler{
+	cursor: pointer;
+	position: relative;
+    text-align: right;
+    top: -68px;
+    padding: 6px;
+    float: right;
+}
+.furgan-variation-selection-needed{
+	cursor:pointer;
+}

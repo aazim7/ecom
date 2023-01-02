@@ -1,0 +1,55 @@
+{% load static %}
+<div class="col-md-12 col-sm-12 dreaming_related-product">
+<div class="block-title">
+<h2 class="product-grid-title">
+    <span>Related Products</span>
+</h2>
+</div>
+<div class="owl-slick owl-products equal-container better-height"
+ data-slick="{&quot;arrows&quot;:false,&quot;slidesMargin&quot;:30,&quot;dots&quot;:true,&quot;infinite&quot;:false,&quot;slidesToShow&quot;:4}"
+ data-responsive="[{&quot;breakpoint&quot;:480,&quot;settings&quot;:{&quot;slidesToShow&quot;:2,&quot;slidesMargin&quot;:&quot;10&quot;}},{&quot;breakpoint&quot;:768,&quot;settings&quot;:{&quot;slidesToShow&quot;:2,&quot;slidesMargin&quot;:&quot;10&quot;}},{&quot;breakpoint&quot;:992,&quot;settings&quot;:{&quot;slidesToShow&quot;:3,&quot;slidesMargin&quot;:&quot;20&quot;}},{&quot;breakpoint&quot;:1200,&quot;settings&quot;:{&quot;slidesToShow&quot;:3,&quot;slidesMargin&quot;:&quot;20&quot;}},{&quot;breakpoint&quot;:1500,&quot;settings&quot;:{&quot;slidesToShow&quot;:3,&quot;slidesMargin&quot;:&quot;30&quot;}}]">
+
+{% for product in r_products %}
+<div class="product-item style-01 post-27 product type-product status-publish has-post-thumbnail product_cat-table product_cat-new-arrivals product_cat-lamp product_tag-table product_tag-sock  instock shipping-taxable purchasable product-type-variable has-default-attributes ">
+    <div class="product-inner tooltip-left">
+        <div class="product-thumb">
+            <a class="thumb-link"
+               href="#" tabindex="0">
+                <img class="img-responsive"
+                     src="{{product.product_images.first.image.url}}"
+                     alt="Tulip Chair" width="600" height="778">
+            </a>
+            <div class="flash"><span class="onnew"><span class="text">New</span></span></div>
+            <div class="group-button">
+                <div class="yith-wcwl-add-to-wishlist">
+                    <div class="yith-wcwl-add-button show">
+                        <a href="#" class="add_to_wishlist">Add to Wishlist</a>
+                    </div>
+                </div>
+                <div class="furgan product compare-button">
+                    <a href="#" class="compare button">Compare</a>
+                </div>
+                <a href="#" class="button yith-wcqv-button">Quick View</a>
+                <div class="add-to-cart">
+                    <a href="#" class="button product_type_variable add_to_cart_button">Add to
+                        cart</a>
+                </div>
+            </div>
+        </div>
+        <div class="product-info equal-elem">
+            <h3 class="product-name product_title">
+                <a href="#"
+                   tabindex="0">{{product.product_name}}</a>
+            </h3>
+            <div class="rating-wapper nostar">
+                <div class="star-rating"><span style="width:80%">Rated <strong
+                        class="rating">0</strong> out of 5</span></div>
+                <span class="review">(0)</span></div>
+            <span class="price"><span class="furgan-Price-amount amount"><span
+                    class="furgan-Price-currencySymbol">$</span>{{product.price}}</span></span>
+        </div>
+    </div>
+</div>
+{% endfor %}
+</div>
+</div>

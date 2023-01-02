@@ -1,0 +1,86 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block metat %}
+Furgan - User Registration
+{% endblock metat %}
+
+
+{% block main-content %}
+
+<div class="banner-wrapper has_background">
+     <img src="{% static 'assets/images/banner-for-all2.jpg' %}"
+     class="img-responsive attachment-1920x447 size-1920x447" alt="img">
+     <div class="banner-wrapper-inner">
+          <h1 class="page-title">My Account</h1>
+          <div role="navigation" aria-label="Breadcrumbs" class="breadcrumb-trail breadcrumbs">
+               <ul class="trail-items breadcrumb">
+                    <li class="trail-item trail-begin"><a href="index.html"><span>Home</span></a></li>
+                    <li class="trail-item trail-end active"><span>My Account</span>
+                    </li>
+               </ul>
+          </div>
+     </div>
+</div>
+<main class="site-main  main-container no-sidebar">
+     <div class="container">
+          <div class="row">
+               <div class="main-content col-md-12">
+                    <div class="page-main-content">
+                         <div class="furgan">
+                              <div class="furgan-notices-wrapper"></div>
+                              <div class="u-columns col2-set" id="customer_login">
+                                   <div class="u-column2 col-2">
+                                        <h2>Register</h2>
+                                        
+                                        <form autocomplete="off" method="post" class="furgan-form furgan-form-register register">
+
+                                             {% csrf_token %}
+                                             <p class="furgan-form-row furgan-form-row--wide form-row form-row-wide">
+                                                 {% for fm in form %} 
+                                                 <!-- {{fm.label_tag}} -->
+                                                 <label for="reg_email">{{fm.label}}&nbsp;<span
+                                                  class="required">*</span></label>
+                                                  {{fm}}  
+                                                 <span> {{fm.errors}}</span>                                   
+                                                  {% endfor %}
+                                             </p>
+                                             <div id="toggler"><i id="eye-w" class="fa fa-eye-slash"></i></div>
+
+                                             <div style="display: none;" class="furgan-privacy-policy-text"><p>Your personal data will be used to
+                                                  support your experience throughout this website, to manage access to your
+                                                  account, and for other purposes described in our <a
+                                                  href="#" class="furgan-privacy-policy-link"
+                                                  target="_blank">privacy policy</a>.</p>
+                                             </div>
+                                             <p class="furgan-FormRow form-row">
+                                                  <button type="submit" class="furgan-Button button" name="register" value="Register">Register</button>
+                                             </p>
+                                        </form>
+                                       
+                                   </div>
+
+                              </div>
+                         </div>
+                    </div>
+               </div>
+          </div>
+     </div>
+</main>
+<script type="text/javascript">
+     x = document.getElementById("toggler").addEventListener('click', toggle);
+     function toggle(){
+         tg = document.getElementById("id_password1");
+         if(tg.type === "password"){
+               tg.type = "value";
+               document.getElementById("eye-w").classList.remove("fa-eye-slash")
+               document.getElementById("eye-w").classList.add("fa-eye")
+         }else{
+          tg.type = "password"
+          document.getElementById("eye-w").classList.add("fa-eye-slash")
+               document.getElementById("eye-w").classList.remove("fa-eye")
+         }
+     }
+</script>
+<!-- <i>👀 👁</i> -->
+{% endblock main-content %}

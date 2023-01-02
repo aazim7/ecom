@@ -1,0 +1,68 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block main-content %}
+
+<div class="banner-wrapper has_background">
+     <img src="{% static 'assets/images/banner-for-all2.jpg' %}"
+     class="img-responsive attachment-1920x447 size-1920x447" alt="img">
+     <div class="banner-wrapper-inner">
+          <h1 class="page-title">My Account</h1>
+          <div role="navigation" aria-label="Breadcrumbs" class="breadcrumb-trail breadcrumbs">
+               <ul class="trail-items breadcrumb">
+                    <li class="trail-item trail-begin"><a href="index.html"><span>Home</span></a></li>
+                    <li class="trail-item trail-end active"><span>My Account</span>
+                    </li>
+               </ul>
+          </div>
+     </div>
+</div>
+<main class="site-main  main-container no-sidebar">
+     <div class="container">
+          <div class="row">
+               <div class="main-content col-md-12">
+                    <div class="page-main-content">
+                         <div class="furgan">
+                              <div class="furgan-notices-wrapper"></div>
+                              <div class="u-columns col2-set" id="customer_login">
+                                   <div class="u-column1 col-1">
+                                        <h2>Login</h2>
+                                        <form class="furgan-form furgan-form-login login" method="post">
+
+                                            {% csrf_token %}
+                                            <p class="furgan-form-row furgan-form-row--wide form-row form-row-wide">
+                                              {% for fm in form %} 
+                                              <!-- {{fm.label_tag}} -->
+                                              <label for="reg_email">{{fm.label}}&nbsp;<span
+                                                  class="required">*</span></label>
+                                                  {{fm}}  
+                                                  <span> {{fm.errors}}</span>                                   
+                                                  {% endfor %}
+                                             </p>
+
+
+                                             <p class="form-row">
+
+                                                  <button type="submit" class="furgan-Button button" name="login"
+                                                  value="Log in">Log in
+                                             </button>
+                                             <labelel class="furgan-form__label furgan-form__label-for-checkbox inline">
+                                                  <input class="furgan-form__input furgan-form__input-checkbox"
+                                                  name="rememberme" type="checkbox" id="rememberme" value="forever">
+                                                  <span>Remember me</span>
+                                             </label>
+                                        </p>
+                                        <p class="furgan-LostPassword lost_password">
+                                             <a href="my-account.htmllost-password/index.html">Lost your password?</a>
+                                        </p>
+                                   </form>
+                              </div>
+                              {{ request.session.get_expiry_date }}
+                         </div>
+                    </div>
+               </div>
+          </div>
+     </div>
+</div>
+</main>
+{% endblock main-content %}

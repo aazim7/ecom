@@ -1,0 +1,20 @@
+<form class="simple_form cart">
+    <div class="single_variation_wrap">
+        <div class="furgan-variation single_variation"></div>
+        <div class="furgan-variation-add-to-cart variations_button">
+            <div class="quantity">
+                <span class="qty-label">Quantiy:</span>
+                <div class="control">
+                    <a id="qminus" class="btn-number quantity-minus">-</a>
+                    <input type="text" maxlength="2" data-step="1" min="1" max="12" name="quantity-simple" value="1" title="Qty" id="counter-qty" class="input-qty input-text qty text" size="2" pattern="[0-9]*" inputmode="numeric">
+                    <a id="qplus" class="btn-number quantity-plus">+</a>
+                </div>
+            </div>
+            <button type="submit" class="single_add_to_cart_button button">
+            Add to cart
+        </button>
+        <input name="add-to-cart" value="27" type="hidden">
+        <input name="product_id" value="{{product.uid}}" type="hidden">
+    </div>
+</div>
+</form>

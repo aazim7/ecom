@@ -1,0 +1,52 @@
+{% extends 'base/base.html' %}	
+{% load static %}
+
+{% block main-content %}
+<center class="otpform" style="margin:3pc 0">
+	<form method="post">
+		{% csrf_token %}
+		<label>Enter OTP</label>
+		<input autocomplete="off" type="text" onkeyup="clickEvent(this,'sec')" id="first" maxlength="1" name="otp1">
+		<input autocomplete="off" type="text" onkeyup="clickEvent(this,'third')" maxlength="1" id="sec" name="otp2">
+		<input autocomplete="off" type="text" onkeyup="clickEvent(this,'forth')" maxlength="1" id="third" name="otp3">
+		<input autocomplete="off" type="text" maxlength="1" id="forth" name="otp4">
+		
+		
+		<button type="submit">
+			Submit Otp
+		</button>
+	</form>
+	<div id="reotp" class="reotp">
+		<p>Resend OTP</p>
+	</div>
+	<div id="msg"></div>
+</center>
+
+<script type="text/javascript">
+	function clickEvent(first,last){
+		
+			if(first.value.length){
+				document.getElementById(last).focus();
+			}
+		}
+
+	x = document.getElementById("reotp")
+	x.addEventListener('click', reotp)
+	
+	function reotp(){
+		const xhr = new XMLHttpRequest();
+		
+		xhr.open('GET', 'reotp', true);
+		xhr.send();
+
+		xhr.onreadystatechange = function(){
+			//console.log(xhr.status);
+			if(this.status === 200){
+				var rec = JSON.parse(xhr.response);
+				document.getElementById("msg").innerText = rec.result
+			}			
+		}
+	}
+
+</script>
+{% endblock main-content %}

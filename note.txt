@@ -1,5 +1,0 @@
-env - enDjango
-
-superadmin - aazim
-pass - aazim@321
-email -aazim@travelviacity.com

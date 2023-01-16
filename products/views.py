@@ -2,7 +2,7 @@ from django.shortcuts import render
 import json
 from .cart import TempCart, anonymous, readtempcart
 from django.views import View
-from .models import Product, ProductImage, Cart, Attribute
+from .models import Product, ProductImage, Cart, Attribute, AttributeValue
 from accounts.models import Profile
 from django.http.response import JsonResponse
 from django.http import HttpResponse
@@ -28,11 +28,29 @@ def product_details(request, slug):
 	#print(request.session["temp-cart"])
 	current_product = Product.objects.filter(slug=slug)
 	variations = Attribute.objects.filter(Variation__slug=slug)
+	main_data = {}
+	codes = []
+	if variations:
+		attr = []
+		values = []
+		for a in variations:
+			tr = AttributeValue.objects.get(value=a.pin)
+			codes.append(tr.color_code)
+			attr.append(str(a.key))
+			values.append(str(a.pin))
+		dummy_data = list(zip(attr, values))
+		# print(dummy_data)
+		
+		for i in dummy_data:
+			main_data.setdefault(i[0], []).append(i[1])
+	else:
+		print("No variations found")
 	
+
 	for x in current_product:
 		related_products = Product.objects.filter(category=x.category).exclude(uid=x.uid)
 		#print(related_products)
-		return render(request, 'products/single-product-video.html', {'product':x, 'r_products':related_products})
+		return render(request, 'products/single-product-video.html', {'product':x, 'r_products':related_products, 'nest':main_data, 'colors':codes})
 
 def addcart(request):
 	if request.method == "GET":

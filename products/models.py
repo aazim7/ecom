@@ -46,6 +46,7 @@ class AttributeType(BaseModel):
 
 class AttributeValue(BaseModel):
 	value=models.CharField(max_length=50, blank=True)
+	color_code = models.CharField(max_length=7,blank=True)
 	def __str__(self):
 		return str(self.value)
 

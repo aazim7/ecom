@@ -1,46 +1,49 @@
-<form class="variations_form cart">
-    <table class="variations">
-        <tbody>
-            <tr>
-                <td class="label"><label>Color</label></td>
-                <td class="value">
-                    <select title="box_style" data-attributetype="box_style"
-                    data-id="pa_color"
-                    class="attribute-select " name="attribute_pa_color"
-                    data-attribute_name="attribute_pa_color"
-                    data-show_option_none="yes">
-                    <option data-type="" data-pa_color="" value="">Choose an option
-                    </option>
+<form action="Post" class="variations_form cart">
+  <table>
+    <head>
+        <tr>
+            <th>Key</th>
+            <th>Value</th>
+        </tr>
+    </head>
+    {% for keys, values in nest.items %}
+    <tr>
+        <td>{{keys}}</td>
+        <td>
+            {% for key in values %}
+            <span>{{key}}</span>, 
+            {% endfor %}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+<table class="variations">
+    <tbody>
+        <tr>
+            <td class="label"><label>Color</label></td>
+            <td class="value">
+                <select title="box_style" data-attributetype="box_style" data-id="pa_color" class="attribute-select " name="attribute_pa_color" data-attribute_name="attribute_pa_color" data-show_option_none="yes">
+                    <option data-type="" value="">Choose an option</option>
+                    {% for x in colors %}
+                    {% if x %}
                     <option data-width="30" data-height="30" data-type="color"
-                    data-pa_color="#3155e2" value="blue"
-                    class="attached enabled">Blue
-                </option>
-                <option data-width="30" data-height="30" data-type="color"
-                data-pa_color="#ff63cb" value="pink"
-                class="attached enabled">Pink
-            </option>
-            <option data-width="30" data-height="30" data-type="color"
-            data-pa_color="#db2b00" value="red"
-            class="attached enabled">Red
-        </option>
-        <option data-width="30" data-height="30" data-type="color"
-        data-pa_color="#e8e120" value="yellow"
-        class="attached enabled">Yellow
-    </option>
-</select>
-<div class="data-val attribute-pa_color" data-attributetype="box_style">
-    <a class="change-value color" href="#" style="background: #3155e2;"
-    data-value="blue"></a><a class="change-value color" href="#"
-    style="background: #ff63cb;"
-    data-value="pink"></a><a
-    class="change-value color" href="#" style="background: #db2b00;"
-    data-value="red"></a><a class="change-value color" href="#"
-    style="background: #e8e120;"
-    data-value="yellow"></a></div>
-    <a class="reset_variations" href="#"
-    style="visibility: hidden;">Clear</a></td>
-</tr>
-</tbody>
+                    data-pa_color="{{x}}" value="{{x}}" class="attached enabled">Pink</option>     
+                    {% endif %}
+                    {% endfor %}
+                </select>
+                <div class="data-val attribute-pa_color" data-attributetype="box_style">
+                    {% for x in colors %}
+                    {% if x %}
+                    <a class="change-value color" style="background: {{x}};"
+                    data-value="{{x}}"></a>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+                <a class="reset_variations" href="#"
+                style="visibility: hidden;">Clear</a>
+            </td>
+        </tr>
+    </tbody>
 </table>
 <div class="single_variation_wrap">
     <div class="furgan-variation single_variation"></div>
@@ -63,3 +66,6 @@
 </div>
 </div>
 </form>
+
+
+

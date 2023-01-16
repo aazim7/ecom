@@ -47,11 +47,13 @@
                                         <span class="onnew"><span class="text">New</span></span></div>
                                         <h1 class="product_title entry-title">{{product.product_name}}</h1>
                                        
-                                        {% for z in product.product_variations.all %}
+                                        <!-- {% for z in product.product_variations.all %}
                                            {{forloop.counter}}
                                            
                                             <p>{{z.pin}}</p>
-                                        {% endfor  %}
+                                        {% endfor  %} -->
+
+                                      
                                         <p class="price">
                                             <span class="furgan-Price-amount amount">
                                                 <span class="furgan-Price-currencySymbol">$</span>{{product.price}}</span>
@@ -143,6 +145,7 @@
     {% endblock main-content %}
 
     {% block for-javascript %}
+    {% if not product.ptype == "variations" %}
     <script type="text/javascript">
         document.getElementById("qplus").addEventListener("click", plus)
         document.getElementById("qminus").addEventListener("click", minus)
@@ -180,4 +183,16 @@
             })
         });
     </script>
+    {% endif %}
+
+    {% if product.ptype == "variations" %}
+    <script type="text/javascript">
+        $(".change-value").click(function(){
+         c = $(this).index();
+         from = $("[data-pa_color]")[c]
+         $(from).attr('selected', true);
+        })
+    </script>
+{% endif %}
+
     {% endblock for-javascript %}

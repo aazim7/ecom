@@ -31,4 +31,4 @@ class Atrb(admin.ModelAdmin):
 
 @admin.register(AttributeValue)
 class Avalue(admin.ModelAdmin):
-    list_display=["value"]
+    list_display=["value", "color_code"]
